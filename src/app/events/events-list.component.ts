@@ -3,6 +3,8 @@ import { ToastrService } from '../common/toastr.service';
 import { ActivatedRoute } from '@angular/router';
 import { IEvent} from './shared/index';
 
+declare let toastr: any
+
 @Component({
   template: `
     <div>
