@@ -1,14 +1,31 @@
-import { Component } from '@angular/core'
+import { Router } from '@angular/router';
+import { Component } from '@angular/core';
+import { AuthService } from './auth.service';
 
 @Component({
-	templateUrl: './login.component.html'
+  templateUrl: './login.component.html',
+  styles: [
+    `
+      em {
+        float: right;
+        padding-left: 10px;
+      }
+    `,
+  ],
 })
-
 export class LoginComponent {
-	userName:any
-	password:any
+  userName: any;
+  password: any;
+  mouseoverLogin: any;
 
-	login(formValues:any) {
-		console.log(formValues)
-	}
+  constructor(private authService: AuthService, private router: Router) {}
+
+  login(formValues: any) {
+    this.authService.loginUser(formValues.username, formValues.password);
+    this.router.navigate(['events']);
+  }
+
+  cancel() {
+    this.router.navigate(['events']);
+  }
 }
