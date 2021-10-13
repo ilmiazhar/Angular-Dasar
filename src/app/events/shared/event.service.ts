@@ -1,18 +1,27 @@
-import { Injectable } from "@angular/core"
-import { Subject, Observable } from "rxjs"
-import { IEvent } from "./event.model"
+import { Injectable } from '@angular/core';
+import { Subject, Observable } from 'rxjs';
+import { IEvent } from './event.model';
 
 @Injectable()
 export class EventService {
-  getEvents():Observable<IEvent[]> {
-    let subject = new Subject<IEvent[]>()
+  getEvents(): Observable<IEvent[]> {
+    let subject = new Subject<IEvent[]>();
 
-    setTimeout(() => { subject.next(EVENTS); subject.complete() }, 200)
-    return subject
+    setTimeout(() => {
+      subject.next(EVENTS);
+      subject.complete();
+    }, 200);
+    return subject;
   }
 
   getEvent(id: number): IEvent | undefined {
-    return EVENTS.find(event => event.id === id)
+    return EVENTS.find((event) => event.id === id);
+  }
+
+  saveEvent(event: any) {
+    event.id = 123;
+    event.session = [];
+    EVENTS.push(event);
   }
 }
 
@@ -102,7 +111,7 @@ const EVENTS: IEvent[] = [
     time: '9:00 am',
     price: 950.0,
     imageUrl: '/assets/images/ng-nl.png',
-    onlineUrl: "https://ng-nl.com/",
+    onlineUrl: 'https://ng-nl.com/',
     // location: {
     //   address: 'The NG-NL Convention Center & Scuba Shop',
     //   city: 'Amsterdam',

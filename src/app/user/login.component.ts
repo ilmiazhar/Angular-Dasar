@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
     `
       em {
         float: right;
+        color: #e05c65;
         padding-left: 10px;
       }
     `,
