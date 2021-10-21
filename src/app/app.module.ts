@@ -9,13 +9,14 @@ import {
   ToastrService,
   NavBarComponent,
   Error404Component,
+  EventListResolver,
   EventsAppComponent,
   EventsListComponent,
-  EventThumbnailComponent,
-  EventDetailsComponent,
-  CreateEventComponent,
   EventRouteActivator,
-  EventListResolver,
+  CreateEventComponent,
+  EventDetailsComponent,
+  CreateSessionComponent,
+  EventThumbnailComponent,
 } from './index';
 
 @NgModule({
@@ -27,12 +28,13 @@ import {
   ],
   declarations: [
     NavBarComponent,
+    Error404Component,
     EventsAppComponent,
     EventsListComponent,
-    EventThumbnailComponent,
-    EventDetailsComponent,
     CreateEventComponent,
-    Error404Component,
+    EventDetailsComponent,
+    CreateSessionComponent,
+    EventThumbnailComponent,
   ],
   providers: [
     EventService,

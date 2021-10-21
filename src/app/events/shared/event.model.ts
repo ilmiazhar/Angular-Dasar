@@ -12,7 +12,6 @@ export interface IEvent {
   },
   onlineUrl?: string,
   sessions: ISession[]
-
 }
 
 export interface ISession {
