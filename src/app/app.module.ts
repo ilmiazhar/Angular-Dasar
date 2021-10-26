@@ -17,6 +17,7 @@ import {
   EventDetailsComponent,
   CreateSessionComponent,
   EventThumbnailComponent,
+  SessionListComponent
 } from './index';
 
 @NgModule({
@@ -35,6 +36,7 @@ import {
     EventDetailsComponent,
     CreateSessionComponent,
     EventThumbnailComponent,
+    SessionListComponent
   ],
   providers: [
     EventService,
