@@ -6,6 +6,7 @@ import {
   appRoutes,
   AuthService,
   EventService,
+  DurationPipe,
   ToastrService,
   NavBarComponent,
   Error404Component,
@@ -17,6 +18,7 @@ import {
   EventDetailsComponent,
   CreateSessionComponent,
   EventThumbnailComponent,
+  CollapsibleWellComponent,
   SessionListComponent
 } from './index';
 
@@ -28,15 +30,17 @@ import {
     RouterModule.forRoot(appRoutes),
   ],
   declarations: [
+    DurationPipe,
     NavBarComponent,
     Error404Component,
     EventsAppComponent,
     EventsListComponent,
     CreateEventComponent,
+    SessionListComponent,
     EventDetailsComponent,
     CreateSessionComponent,
     EventThumbnailComponent,
-    SessionListComponent
+    CollapsibleWellComponent
   ],
   providers: [
     EventService,
