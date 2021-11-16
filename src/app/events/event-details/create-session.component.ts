@@ -37,7 +37,7 @@ export class CreateSessionComponent implements OnInit {
   @Output() saveNewSession = new EventEmitter();
   @Output() cancelAddSession = new EventEmitter();
 
-  newSessionForm!: FormGroup;
+  newSessionForm: any;
   name!: FormControl;
   presenter!: FormControl;
   duration!: FormControl;
@@ -80,6 +80,6 @@ export class CreateSessionComponent implements OnInit {
   }
 
   cancel() {
-    this.cancelAddSession.emit()
+    this.cancelAddSession.emit();
   }
 }
