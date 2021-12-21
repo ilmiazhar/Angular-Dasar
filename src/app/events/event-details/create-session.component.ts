@@ -37,7 +37,7 @@ export class CreateSessionComponent implements OnInit {
   @Output() saveNewSession = new EventEmitter();
   @Output() cancelAddSession = new EventEmitter();
 
-  newSessionForm: any;
+  newSessionForm!: any;
   name!: FormControl;
   presenter!: FormControl;
   duration!: FormControl;

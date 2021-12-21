@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import {
+  Toastr,
   appRoutes,
   AuthService,
   EventService,
   DurationPipe,
-  ToastrService,
+  TOASTR_TOKEN,
   NavBarComponent,
   Error404Component,
   EventListResolver,
@@ -19,8 +20,10 @@ import {
   CreateSessionComponent,
   EventThumbnailComponent,
   CollapsibleWellComponent,
-  SessionListComponent
+  SessionListComponent,
 } from './index';
+
+declare let toastr: Toastr;
 
 @NgModule({
   imports: [
@@ -40,11 +43,11 @@ import {
     EventDetailsComponent,
     CreateSessionComponent,
     EventThumbnailComponent,
-    CollapsibleWellComponent
+    CollapsibleWellComponent,
   ],
   providers: [
     EventService,
-    ToastrService,
+    { provide: TOASTR_TOKEN, useValue: toastr },
     EventRouteActivator,
     EventListResolver,
     AuthService,
