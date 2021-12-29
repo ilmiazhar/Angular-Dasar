@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import {
   Toastr,
+  JQ_TOKEN,
   appRoutes,
   AuthService,
   EventService,
@@ -23,7 +24,9 @@ import {
   SessionListComponent,
 } from './index';
 
-declare let toastr: Toastr;
+//declare let toastr: Toastr;
+let toastr: Toastr = (window as { [key: string]: any })['toastr']
+let jQuery = (window as { [key: string]: any })['$']
 
 @NgModule({
   imports: [
@@ -48,6 +51,7 @@ declare let toastr: Toastr;
   providers: [
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr },
+    { provide: JQ_TOKEN, useValue: jQuery },
     EventRouteActivator,
     EventListResolver,
     AuthService,

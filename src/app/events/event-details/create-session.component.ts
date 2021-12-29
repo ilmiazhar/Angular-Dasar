@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { ISession, restrictedWords } from '../shared/index';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ISession, restrictedWords } from '../shared/index';
 
 @Component({
   selector: 'create-session',
