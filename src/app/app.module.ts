@@ -16,17 +16,20 @@ import {
   EventsAppComponent,
   EventsListComponent,
   EventRouteActivator,
+  SimpleModalComponent,
   CreateEventComponent,
   EventDetailsComponent,
   CreateSessionComponent,
   EventThumbnailComponent,
   CollapsibleWellComponent,
+  ModalTriggerDirective,
   SessionListComponent,
 } from './index';
 
-//declare let toastr: Toastr;
-let toastr: Toastr = (window as { [key: string]: any })['toastr']
-let jQuery = (window as { [key: string]: any })['$']
+// declare let toastr: Toastr;
+// declare let jQuery: any;
+let toastr: Toastr = (window as { [key: string]: any })['toastr'];
+let jQuery = (window as { [key: string]: any })['$'];
 
 @NgModule({
   imports: [
@@ -42,8 +45,10 @@ let jQuery = (window as { [key: string]: any })['$']
     EventsAppComponent,
     EventsListComponent,
     CreateEventComponent,
+    SimpleModalComponent,
     SessionListComponent,
     EventDetailsComponent,
+    ModalTriggerDirective,
     CreateSessionComponent,
     EventThumbnailComponent,
     CollapsibleWellComponent,
