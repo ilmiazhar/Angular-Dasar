@@ -1,21 +1,23 @@
+import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
-import { Subject, Observable } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 import { IEvent, ISession } from './event.model';
 
 @Injectable()
 export class EventService {
-  getEvents(): Observable<IEvent[]> {
-    let subject = new Subject<IEvent[]>();
+  constructor(private http: HttpClient) {}
 
-    setTimeout(() => {
-      subject.next(EVENTS);
-      subject.complete();
-    }, 200);
-    return subject;
+  getEvents(): Observable<IEvent[]> {
+    return this.http
+      .get<IEvent[]>('/api/events')
+      .pipe(catchError(this.handleError<IEvent[]>('getEvents', [])));
   }
 
-  getEvent(id: number): IEvent | undefined {
-    return EVENTS.find((event) => event.id === id);
+  getEvent(id: number): Observable<IEvent> {
+    return this.http
+      .get<IEvent>('/api/events/' + id)
+      .pipe(catchError(this.handleError<IEvent>('getEvents')));
   }
 
   saveEvent(event: any) {
@@ -51,6 +53,13 @@ export class EventService {
       emitter.emit(results);
     }, 200);
     return emitter;
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
+    };
   }
 }
 
@@ -365,3 +374,10 @@ const EVENTS: IEvent[] = [
     ],
   },
 ];
+
+// let subject = new Subject<IEvent[]>();
+// setTimeout(() => {
+//   subject.next(EVENTS);
+//   subject.complete();
+// }, 200);
+// return subject;

@@ -2,6 +2,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import {
   Toastr,
   JQ_TOKEN,
@@ -10,12 +11,12 @@ import {
   EventService,
   DurationPipe,
   TOASTR_TOKEN,
+  EventResolver,
   NavBarComponent,
   Error404Component,
   EventListResolver,
   EventsAppComponent,
   EventsListComponent,
-  EventRouteActivator,
   SimpleModalComponent,
   CreateEventComponent,
   EventDetailsComponent,
@@ -37,6 +38,7 @@ let jQuery = (window as { [key: string]: any })['$'];
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(appRoutes),
+    HttpClientModule,
   ],
   declarations: [
     DurationPipe,
@@ -57,7 +59,7 @@ let jQuery = (window as { [key: string]: any })['$'];
     EventService,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery },
-    EventRouteActivator,
+    EventResolver,
     EventListResolver,
     AuthService,
     { provide: 'canDeactivateCreateEvent', useValue: checkDirtyState },
