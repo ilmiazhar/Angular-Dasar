@@ -96,6 +96,7 @@
   </div>
 
   <session-list
+    [eventId]="event?.id"
     [filterBy]="filterBy"
     [orderBy]="orderBy"
     *ngIf="!addMode"
